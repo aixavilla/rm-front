@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# rm-front
-=======
 # rm-front
 
 ## Project setup
@@ -20,4 +17,3 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
->>>>>>> origin/main-page
