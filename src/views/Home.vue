@@ -1,18 +1,46 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="../assets/RickandMorty-logo.png">
+    <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Specie</th>
+          <th scope="col">Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in characters" :key="index">
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.species}}</td>
+          <td>{{item.gender}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import character from '../services/character';
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+  data(){
+    return{
+      characters: []
+    }
+  },
+  created(){
+    this.listCharacter();
+  },
+  methods:{
+    listCharacter(){
+      character.allCharacter().then(res => {
+        this.characters = res.results;
+      });
+    }
+  }    
 }
 </script>
